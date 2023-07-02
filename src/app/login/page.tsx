@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import toast from "react-hot-toast";
+import {toast, Toaster} from "react-hot-toast";
 
 export default function Login(){
     const router = useRouter()
@@ -23,8 +23,8 @@ export default function Login(){
             router.push("/profile");
         } 
         catch (error: any) {
-            console.log("Login failed", error.message);
-            toast.error(error.message);
+            console.log("Login failed", error.response.data.message);
+            toast.error(error.response.data.message);
         }
         finally{
             setLoading(false);
@@ -43,6 +43,7 @@ export default function Login(){
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">
+            <Toaster />
             <h1 className="text-white text-4xl font-semibold mb-4">
                 {loading ? "Processing" : "Login"}
             </h1>
