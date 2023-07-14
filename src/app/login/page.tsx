@@ -49,7 +49,7 @@ export default function Login(){
             </h1>
             <hr />
             
-            <label htmlFor="email text-3xl mb-3">Email</label>
+            <label htmlFor="email">Email</label>
             <input 
                 className="p-2 text-black rounded-lg border-gray-300 mb-4 focus:outline-none focus:border-gray-600"
                 type="email" 
@@ -60,7 +60,7 @@ export default function Login(){
             />
             <label htmlFor="password text-3xl mb-3">Password</label>
             <input 
-                className="p-2 text-black rounded-lg border-gray-300 mb-4 focus:outline-none focus:border-gray-600"
+                className="p-2 text-black rounded-lg border-gray-300 mb-3 focus:outline-none focus:border-gray-600"
                 type="password" 
                 id="password"
                 value={user.password}
@@ -72,7 +72,9 @@ export default function Login(){
                 disabled={buttonDisabled.valueOf()}
                 onClick={onLogin} 
                 className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded mt-1 mb-3">Login</button>
-            <Link className="text-sm" href="/signup">Visit signup page</Link>
+
+            <Link className="text-sm mb-1" href="/signup">Visit signup page</Link>
+            <Link href="/forgot-password" className="text-sm text-blue-600">Forgot Password?</Link>
         </div>
     )
 }
