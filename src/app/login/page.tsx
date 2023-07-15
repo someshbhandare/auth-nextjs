@@ -24,7 +24,11 @@ export default function Login(){
         } 
         catch (error: any) {
             console.log("Login failed", error.message);
-            toast.error(error.message);
+            if(error.response){
+                toast.error(error.response.data.message);
+            }else{
+                toast.error(error.message);
+            }
         }
         finally{
             setLoading(false);
