@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 export function middleware(request: NextRequest){
     const newUrl = request.nextUrl.pathname;
     const isPublicPath = newUrl == "/login" || newUrl == "/signup"
-    const token = request.cookies.get("token") || "";
+    const token = request.cookies.get("token")?.value || "";
 
-    console.log("isPublicPath:",isPublicPath,", token:", token);
+    // console.log("isPublicPath:",isPublicPath,", token:", token);
     if(isPublicPath && token){
         return NextResponse.redirect(new URL('/', request.url));
     }
