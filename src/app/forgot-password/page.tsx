@@ -1,13 +1,13 @@
 "use client";
 
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function forgotPasswordPage() {
-    const [email, setEmail] = useState("");
-    const [buttonDisabled, setButtonDisabled] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [email, setEmail] = React.useState("");
+    const [buttonDisabled, setButtonDisabled] = React.useState(false);
+    const [loading, setLoading] = React.useState(false);
 
     const resetPassword = async () => {
         try {
@@ -30,7 +30,7 @@ export default function forgotPasswordPage() {
         }
     }
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (email.length > 0) {
             setButtonDisabled(false);
         }

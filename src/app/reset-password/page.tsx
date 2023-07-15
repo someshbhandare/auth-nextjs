@@ -7,11 +7,11 @@ import { Toaster, toast } from "react-hot-toast";
 
 export default function resetPasswordPage() {
     const router = useRouter();
-    const [loading, setLoading] = useState(false)
-    const [isValid, setIsValid] = useState(false);
-    const [buttonDisabled, setButtonDisabled] = useState(false);
-    const [userId, setuserId] = useState("")
-    const [user, setUser] = useState({
+    const [loading, setLoading] = React.useState(false)
+    const [isValid, setIsValid] = React.useState(false);
+    const [buttonDisabled, setButtonDisabled] = React.useState(false);
+    const [userId, setuserId] = React.useState("")
+    const [user, setUser] = React.useState({
         password: "",
         confirmPass: ""
     });
@@ -65,13 +65,13 @@ export default function resetPasswordPage() {
         }
     }
 
-    useEffect(() => {
+    React.useEffect(() => {
         const urlToken = window.location.href.split("=")[1] || "";
         console.log(urlToken)
         if(urlToken.length > 0) validateToken(urlToken);
     }, [])
 
-    useEffect(() => {
+    React.useEffect(() => {
       if(user.password.length > 0 && user.confirmPass.length > 0){
         setButtonDisabled(false);
       }
