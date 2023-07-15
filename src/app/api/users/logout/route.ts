@@ -6,8 +6,10 @@ export async function GET(request: NextRequest, response: NextResponse){
             message: "Logout success",
             success: true
         }, {status: 200})
+
+        // const {val, options} = request.cookies.getWithOptions("token")
         response.cookies.set("token", "", {expires: new Date(Date.now())})
-        // response.cookies.delete("token")
+        response.cookies.delete("token")
         return response;
     } 
     catch (error: any) {
