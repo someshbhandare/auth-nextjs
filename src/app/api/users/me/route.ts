@@ -1,6 +1,6 @@
 import { connect } from "@/dbConfig/dbConfig";
 import getTokenData from "@/helpers/getTokenData";
-import User from "@/models/UserModel.js";
+import User from "@/models/UserModel";
 import { NextRequest, NextResponse } from "next/server";
 
 connect()
