@@ -8,7 +8,7 @@ export async function GET(request: NextRequest, response: NextResponse){
         }, {status: 200})
 
         // const {val, options} = request.cookies.getWithOptions("token")
-        response.cookies.set("token", "", {expires: new Date(Date.now())})
+        response.cookies.set("token", " ", {expires: new Date(Date.now())})
         response.cookies.delete("token")
         return response;
     } 

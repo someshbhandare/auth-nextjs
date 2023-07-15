@@ -1,15 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
+import User from "./models/UserModel";
+import getTokenData from "./helpers/getTokenData";
 
-export function middleware(request: NextRequest){
+export async function middleware(request: NextRequest){
     const newUrl = request.nextUrl.pathname;
     const isPublicPath = newUrl == "/login" || newUrl == "/signup"
-    const token = request.cookies.get("token")?.value || "";
+    let validToken = false;
 
+    try {
+        await getTokenData(request);
+        validToken = true;
+    } catch (error) {
+        validToken = false;
+    }
+    
     // console.log("isPublicPath:",isPublicPath,", token:", token);
-    if(isPublicPath && token){
+    if(isPublicPath && validToken){
         return NextResponse.redirect(new URL('/', request.url));
     }
-    if(!isPublicPath && !token){
+    if(!isPublicPath && !validToken){
         return NextResponse.redirect(new URL('/login', request.url));
     }
 }
