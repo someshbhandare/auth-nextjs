@@ -8,8 +8,8 @@ export async function GET(request: NextRequest, response: NextResponse){
         }, {status: 200})
 
         // const {val, options} = request.cookies.getWithOptions("token")
-        response.cookies.set("token", " ", {expires: new Date(Date.now())})
-        response.cookies.delete("token")
+        response.cookies.set(process.env.ACCESS_TOKEN!, "", {expires: new Date(Date.now())})
+        response.cookies.delete(process.env.ACCESS_TOKEN!)
         return response;
     } 
     catch (error: any) {
